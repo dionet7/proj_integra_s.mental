@@ -25,14 +25,62 @@
             color: #f4f4f4;
         }
     </style>
+        <script>
+            function abrirQuiz() {
+                const perguntas = [
+                    {
+                        pergunta: "Com que frequência você se sente ansioso ou estressado?",
+                        opcoes: ["Nunca", "Raramente", "Às vezes", "Frequentemente", "Sempre"]
+                    },
+                    {
+                        pergunta: "Como você avalia sua qualidade de sono?",
+                        opcoes: ["Excelente", "Boa", "Regular", "Ruim", "Péssima"]
+                    },
+                    {
+                        pergunta: "Com que frequência você se sente feliz ou satisfeito?",
+                        opcoes: ["Sempre", "Frequentemente", "Às vezes", "Raramente", "Nunca"]
+                    },
+                    {
+                        pergunta: "Você sente que tem apoio emocional de amigos ou familiares?",
+                        opcoes: ["Sempre", "Frequentemente", "Às vezes", "Raramente", "Nunca"]
+                    }
+                ];
+    
+                let respostas = [];
+    
+                for (let i = 0; i < perguntas.length; i++) {
+                    let resposta = prompt(`${perguntas[i].pergunta}\n\n${perguntas[i].opcoes.map((op, idx) => `${idx + 1}. ${op}`).join("\n")}`);
+                    if (resposta === null) {
+                        alert("Quiz cancelado.");
+                        return;
+                    }
+                    respostas.push(parseInt(resposta));
+                }
+    
+                const pontuacao = respostas.reduce((acc, curr) => acc + curr, 0);
+                let resultado;
+    
+                if (pontuacao <= 6) {
+                    resultado = "Sua saúde mental parece estar ótima! Continue cuidando bem de si mesmo.";
+                } else if (pontuacao <= 12) {
+                    resultado = "Sua saúde mental está boa, mas pode haver espaço para melhorias.";
+                } else if (pontuacao <= 18) {
+                    resultado = "Sua saúde mental está moderada. Considere buscar atividades relaxantes ou apoio.";
+                } else {
+                    resultado = "Sua saúde mental parece estar em risco. É importante procurar ajuda profissional.";
+                }
+    
+                alert(resultado);
+            }
+        </script>
 </head>
 <body>
     <div class="menu">
-        <a href="index.html">Início</a>
-        <a href="quiz.html">Quiz</a>
-        <a href="forum.html">Fórum</a>
-        <a href="pagina_login.html">Login</a>
-        <a href="pagina_cadastro.html">Cadastro</a>
+        <a href="./homepage.html">Início</a>
+        <a href="#" onclick="abrirQuiz()">Quiz</a>
+        <a href="./forum.html">Fórum</a>
+        <a href="./login.html">Login</a>
+        <a href="./cadastro.html">Cadastro</a>
     </div>
 </body>
 </html>
