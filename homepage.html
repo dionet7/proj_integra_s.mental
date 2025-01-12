@@ -1,11 +1,39 @@
 <!DOCTYPE html>
-<html lang="pt-BR>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagina Inicial</title>
+    <title>Página Inicial</title>
+    <link rel="stylesheet" href="estilos_pastel.css">
+    <style>
+        .menu {
+            display: flex;
+            justify-content: center;
+            background-color: #b7b7a4; /* Tom pastel */
+            padding: 10px 0;
+        }
+
+        .menu a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: #f4f4f4;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="menu">
+        <a href="index.html">Início</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="forum.html">Fórum</a>
+        <a href="login.html">Login</a>
+        <a href="cadastro.html">Cadastro</a>
+    </div>
 </body>
 </html>
+
