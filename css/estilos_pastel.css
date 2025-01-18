@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f9f3e6; /* Tom pastel */
+    background-color: hsl(193, 57%, 77%); /* Tom pastel */
 }
 
 .container {

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz de Saúde Mental</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+        #quiz-container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .pergunta {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        #resultado {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div id="quiz-container">
+        <h1>Quiz de Saúde Mental</h1>
+        <div id="quiz"></div>
+        <button id="enviar">Enviar Respostas</button>
+        <div id="resultado"></div>
+    </div>
+
+    <script>
+        const perguntas = [
+            {
+                pergunta: "Com que frequência você se sente ansioso ou estressado?",
+                opcoes: ["Nunca", "Raramente", "Às vezes", "Frequentemente", "Sempre"]
+            },
+            {
+                pergunta: "Como você avalia sua qualidade de sono?",
+                opcoes: ["Excelente", "Boa", "Regular", "Ruim", "Péssima"]
+            },
+            {
+                pergunta: "Com que frequência você se sente feliz ou satisfeito?",
+                opcoes: ["Sempre", "Frequentemente", "Às vezes", "Raramente", "Nunca"]
+            },
+            {
+                pergunta: "Você sente que tem apoio emocional de amigos ou familiares?",
+                opcoes: ["Sempre", "Frequentemente", "Às vezes", "Raramente", "Nunca"]
+            }
+        ];
+
+        const quizContainer = document.getElementById("quiz");
+        const resultadoContainer = document.getElementById("resultado");
+        const enviarButton = document.getElementById("enviar");
+
+        function construirQuiz() {
+            perguntas.forEach((pergunta, index) => {
+                const perguntaDiv = document.createElement("div");
+                perguntaDiv.className = "pergunta";
+
+                const perguntaTexto = document.createElement("h2");
+                perguntaTexto.textContent = `${index + 1}. ${pergunta.pergunta}`;
+                perguntaDiv.appendChild(perguntaTexto);
+
+                pergunta.opcoes.forEach((opcao, opcaoIndex) => {
+                    const label = document.createElement("label");
+                    const input = document.createElement("input");
+                    input.type = "radio";
+                    input.name = `pergunta${index}`;
+                    input.value = opcaoIndex + 1;
+                    label.appendChild(input);
+                    label.appendChild(document.createTextNode(opcao));
+                    perguntaDiv.appendChild(label);
+                });
+
+                quizContainer.appendChild(perguntaDiv);
+            });
+        }
+
+        function mostrarResultado() {
+            let pontuacao = 0;
+            perguntas.forEach((pergunta, index) => {
+                const radios = document.querySelectorAll(`input[name="pergunta${index}"]`);
+                radios.forEach(radio => {
+                    if (radio.checked) {
+                        pontuacao += parseInt(radio.value);
+                    }
+                });
+            });
+
+            let resultado;
+            if (pontuacao <= 6) {
+                resultado = "Sua saúde mental parece estar ótima! Continue cuidando bem de si mesmo.";
+            } else if (pontuacao <= 12) {
+                resultado = "Sua saúde mental está boa, mas pode haver espaço para melhorias.";
+            } else if (pontuacao <= 18) {
+                resultado = "Sua saúde mental está moderada. Considere buscar atividades relaxantes ou apoio.";
+            } else {
+                resultado = "Sua saúde mental parece estar em risco. É importante procurar ajuda profissional.";
+            }
+
+            resultadoContainer.textContent = resultado;
+        }
+
+        construirQuiz();
+        enviarButton.addEventListener("click", mostrarResultado);
+    </script>
+</body>
+</html>

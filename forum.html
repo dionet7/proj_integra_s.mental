@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fórum</title>
     <link rel="stylesheet" href="estilos_pastel.css">
-    <!-- Aqui foi feito um estilo css para o menu da barra superior -->
     <style>
         .menu {
             display: flex;
             justify-content: center;
-            background-color: #b7b7a4; /* Tom pastel */
+            background-color: #b7b7a4;
             padding: 10px 0;
         }
 
         .menu a {
-            color: white;
+            color: #000000;
             text-decoration: none;
             margin: 0 15px;
             font-size: 16px;
@@ -25,56 +24,94 @@
         .menu a:hover {
             color: #f4f4f4;
         }
+
+        /* Estilos para o fórum */
+        .forum-container {
+            width: 80%;
+            margin: 20px auto;
+            border: 1px solid #080808;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f9f9f9; /* Cor de fundo mais clara */
+        }
+
+        .forum-post {
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        .post-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .post-author {
+            font-style: italic;
+            font-size: smaller;
+            color: #777;
+            margin-bottom: 5px;
+        }
+        .post-content {
+            margin-bottom: 10px;
+        }
+        .new-post {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+        .new-post label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .new-post input[type="text"],
+        .new-post textarea {
+            width: calc(100% - 12px); /* Ajuste para a borda */
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            box-sizing: border-box; /* Garante que o padding não aumenta o tamanho */
+        }
+        .new-post button {
+            background-color: #b7b7a4;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        .new-post button:hover {
+            background-color: #a7a794; /* Tom mais escuro no hover */
+        }
     </style>
-    <!-- Aqui foi feito um teste de quiz em janela pop-up -->
-        <script> 
-            function abrirQuiz() {
-                const perguntas = [
-                    {
-                        pergunta: "Com que frequência você se sente ansioso ou estressado?",
-                        opcoes: ["Nunca", "Raramente", "Às vezes", "Frequentemente", "Sempre"]
-                    },
-                    {
-                        pergunta: "Como você avalia sua qualidade de sono?",
-                        opcoes: ["Excelente", "Boa", "Regular", "Ruim", "Péssima"]
-                    },
-                    {
-                        pergunta: "Com que frequência você se sente feliz ou satisfeito?",
-                        opcoes: ["Sempre", "Frequentemente", "Às vezes", "Raramente", "Nunca"]
-                    },
-                    {
-                        pergunta: "Você sente que tem apoio emocional de amigos ou familiares?",
-                        opcoes: ["Sempre", "Frequentemente", "Às vezes", "Raramente", "Nunca"]
-                    }
-                ];
-    
-                let respostas = [];
-    
-                for (let i = 0; i < perguntas.length; i++) {
-                    let resposta = prompt(`${perguntas[i].pergunta}\n\n${perguntas[i].opcoes.map((op, idx) => `${idx + 1}. ${op}`).join("\n")}`);
-                    if (resposta === null) {
-                        alert("Quiz cancelado.");
-                        return;
-                    }
-                    respostas.push(parseInt(resposta));
-                }
-    
-                const pontuacao = respostas.reduce((acc, curr) => acc + curr, 0);
-                let resultado;
-    
-                if (pontuacao <= 6) {
-                    resultado = "Sua saúde mental parece estar ótima! Continue cuidando bem de si mesmo.";
-                } else if (pontuacao <= 12) {
-                    resultado = "Sua saúde mental está boa, mas pode haver espaço para melhorias.";
-                } else if (pontuacao <= 18) {
-                    resultado = "Sua saúde mental está moderada. Considere buscar atividades relaxantes ou apoio.";
-                } else {
-                    resultado = "Sua saúde mental parece estar em risco. É importante procurar ajuda profissional.";
-                }
-    
-                alert(resultado);
+    <script>
+        function abrirQuiz() { /* ... (mesmo código do quiz) ... */ }
+        function criarPost() {
+            const titulo = document.getElementById("post-titulo").value;
+            const conteudo = document.getElementById("post-conteudo").value;
+            const autor = "Usuário Anônimo"; // Implementar sistema de login para pegar o nome real
+
+            if (titulo && conteudo) {
+                const novoPost = document.createElement("div");
+                novoPost.className = "forum-post";
+                novoPost.innerHTML = `
+                    <div class="post-title">${titulo}</div>
+                    <div class="post-author">Por: ${autor}</div>
+                    <div class="post-content">${conteudo}</div>
+                `;
+                document.getElementById("forum-posts").appendChild(novoPost);
+
+                // Limpa os campos do formulário
+                document.getElementById("post-titulo").value = "";
+                document.getElementById("post-conteudo").value = "";
+            } else {
+                alert("Por favor, preencha o título e o conteúdo do post.");
             }
-        </script>
+        }
+    </script>
 </head>
 <body>
     <div class="menu">
@@ -83,6 +120,29 @@
         <a href="./forum.html">Fórum</a>
         <a href="./login.html">Login</a>
         <a href="./cadastro.html">Cadastro</a>
+    </div>
+
+    <div class="forum-container">
+        <h1>Fórum de Discussão</h1>
+
+        <div id="forum-posts">
+            <div class="forum-post">
+                <div class="post-title">Bem-vindo ao Fórum!</div>
+                <div class="post-author">Por: Admin</div>
+                <div class="post-content">Este é um exemplo de post no fórum. Sinta-se à vontade para compartilhar suas dúvidas e experiências.</div>
+            </div>
+        </div>
+
+        <div class="new-post">
+            <h2>Criar Novo Post</h2>
+            <label for="post-titulo">Título:</label>
+            <input type="text" id="post-titulo" name="post-titulo">
+
+            <label for="post-conteudo">Conteúdo:</label>
+            <textarea id="post-conteudo" name="post-conteudo" rows="4"></textarea>
+
+            <button onclick="criarPost()">Publicar</button>
+        </div>
     </div>
 </body>
 </html>
