@@ -4,28 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
-    <link rel="stylesheet" href="estilos_pastel.css">
-    <style>
-        /* Aqui foi feito um estilo css para o menu da barra superior    */
-        .menu {
-            display: flex;
-            justify-content: center;
-            background-color: #b7b7a4; /* Tom pastel */
-            padding: 10px 0;
-        }
-
-        .menu a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 16px;
-            transition: color 0.3s ease;
-        }
-
-        .menu a:hover {
-            color: #f4f4f4;
-        }
-    </style>
+    <link rel="stylesheet" href="./css/estilos_pastel.css">
          <script>
             function abrirQuiz() {
                 const perguntas = [
@@ -75,15 +54,18 @@
             }
         </script>
 </head>
-<body>
-    <div class="menu">
-        <a href="./homepage.html">Início</a>
-        <a href="#" onclick="abrirQuiz()">Quiz</a>
-        <a href="./forum.html">Fórum</a>
-        <a href="./login.html">Login</a>
-        <a href="./cadastro.html">Cadastro</a>
-    </div>
-</body>
+    <body>
+        <div class="menu">
+            <img src="./img/plenamente.png" alt="plenamente" style="display: block; margin: 0 auto 0.0px; max-width: 50px;">
+            <a href="./homepage.html">Início</a>
+            <a href="#" onclick="abrirQuiz()">Quiz</a>
+            <a href="./forum.html">Fórum</a>
+            <a href="./login.html">Login</a>
+            <a href="./cadastro.html">Cadastro</a>
+            <a href="./diario_das_emocoes.html">Diário das Emoções</a>
+            <a href="./agradecimentos.html">Agradecimentos</a>
+        </div>
+    </body>
 </html>
 
 <!-- http://127.0.0.1:5500/ -->

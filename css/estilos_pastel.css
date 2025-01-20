@@ -1,4 +1,27 @@
 /* Estilos gerais */
+.menu {
+    display: flex;
+    justify-content:end;
+    background-color: #17bdbd;
+    padding: 10px 0;
+    position: fixed;
+    top: 0;
+    border: #a5a58d;
+}
+        
+.menu a {
+    color: white;
+    text-decoration: none;
+    margin: 0 15px;
+    font-size: 16px;
+    transition: color 0.3s ease;
+    padding:0%
+}
+        
+.menu a:hover {
+    color: #f4f4f4;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -7,7 +30,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f9f3e6; /* Tom pastel */
+    background-color: #a3e7d6; /* Tom pastel */
 }
 
 .container {

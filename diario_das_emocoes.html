@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário das Emoções</title>
+    <link rel="stylesheet" href="./css/estilos_pastel.css">
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        #diario-container {
+            width: 80%;
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+            border-radius: 5px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        textarea {
+            width: calc(100% - 12px);
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            resize: vertical; /* Permite redimensionar verticalmente */
+            min-height: 100px;
+        }
+        button {
+            background-color: #4CAF50; /* Cor verde */
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #entradas-anteriores {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        .entrada {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .entrada-data {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="diario-container">
+        <h1>Diário das Emoções</h1>
+
+        <label for="data">Data:</label>
+        <input type="date" id="data" name="data">
+
+        <label for="emocoes">Emoções (descreva como você se sentiu):</label>
+        <textarea id="emocoes" name="emocoes"></textarea>
+
+        <button onclick="salvarEntrada()">Salvar Entrada</button>
+
+        <div id="entradas-anteriores">
+            <h2>Entradas Anteriores</h2>
+        </div>
+    </div>
+
+    <script>
+        function salvarEntrada() {
+            const data = document.getElementById("data").value;
+            const emocoes = document.getElementById("emocoes").value;
+
+            if (data && emocoes) {
+                const entradasAnteriores = document.getElementById("entradas-anteriores");
+
+                const novaEntrada = document.createElement("div");
+                novaEntrada.className = "entrada";
+                novaEntrada.innerHTML = `
+                    <div class="entrada-data">${data}</div>
+                    <div class="entrada-emocoes">${emocoes}</div>
+                `;
+
+                entradasAnteriores.appendChild(novaEntrada);
+
+                document.getElementById("data").value = "";
+                document.getElementById("emocoes").value = "";
+            } else {
+                alert("Por favor, preencha a data e as emoções.");
+            }
+        }
+    </script>
+        <div class="menu">
+            <img src="./img/plenamente.png" alt="plenamente" style="display: block; margin: 0 auto 0.0px; max-width: 50px;">
+            <a href="./homepage.html">Início</a>
+            <a href="#" onclick="abrirQuiz()">Quiz</a>
+            <a href="./forum.html">Fórum</a>
+            <a href="./login.html">Login</a>
+            <a href="./cadastro.html">Cadastro</a>
+            <a href="./diario_das_emocoes.html">Diário das Emoções</a>
+            <a href="./agradecimentos.html">Agradecimentos</a>
+            
+
+        </div>
+    
+</body>
+</html>
