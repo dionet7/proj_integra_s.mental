@@ -30,7 +30,11 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+<<<<<<< HEAD
     background-color: #a3e7d6; /* Tom pastel */
+=======
+    background-color: hsl(193, 57%, 77%); /* Tom pastel */
+>>>>>>> 634a72488300b8e6b77d1caa118d531fd4165043
 }
 
 .container {
