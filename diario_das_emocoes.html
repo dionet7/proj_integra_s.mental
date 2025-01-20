@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diário das Emoções</title>
+    <link rel="stylesheet" href="./css/estilos_pastel.css">
+    <style>
+        /* Estilos gerais */
+        body {
+            display: flex;
+            flex-direction: column; /* Menu em cima, conteúdo embaixo */
+            min-height: 100vh; /* Garante altura total da tela */
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Menu */
+        .menu {
+            display: flex;
+            justify-content: center;
+            background-color: #f5add1c0;
+            padding: 10px 0;
+            font-family: Arial, sans-serif; /* Fonte do menu */
+        }
+
+        .menu a {
+            color: #000000;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            transition: color 0.3s ease;
+            font-family: 'Arial', sans-serif; /* Fonte do menu */
+        }
+
+        .menu a:hover {
+            color: hsl(0, 0%, 100%);
+        }
+
+        .menu img {
+            max-width: 50px;
+            margin-right: 15px;
+        }
+
+        /* Conteúdo principal centralizado */
+        main.container {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 90%;
+            max-width: 800px;
+            margin: 80px auto 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        h1, h2 {
+            text-align: center;
+            color: #6d6875;
+        }
+
+        label {
+            display: block;
+            font-size: 14px;
+            color: #6d6875;
+            margin-bottom: 5px;
+        }
+
+        input[type="date"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #d3cec4;
+            border-radius: 5px;
+            font-size: 14px;
+            box-sizing: border-box; /* Essencial! */
+        }
+
+        textarea {
+            resize: vertical; /* Permite redimensionar verticalmente */
+            min-height: 100px;
+        }
+
+        button {
+            width: 100%;
+            background-color: #b7b7a4;
+            color: #ffffff;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #a5a58d;
+        }
+
+        #entradas-anteriores {
+            margin-top: 20px;
+            border-top: 1px solid #ccc;
+            padding-top: 20px;
+        }
+
+        .entrada {
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .entrada-data {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Menu de navegação igual ao da página de login -->
+    <div class="menu">
+        <img src="./img/plenamente.png" alt="Logo Plenamente">
+        <a href="./homepage.html">Início</a>
+        <a href="#" onclick="abrirQuiz()">Quiz</a>
+        <a href="./forum.html">Fórum</a>
+        <a href="./login.html">Login</a>
+        <a href="./cadastro.html">Cadastro</a>
+        <a href="./diario_das_emocoes.html">Diário das Emoções</a>
+        <a href="./agradecimentos.html">Agradecimentos</a>
+    </div>
+
+    <main class="container">
+        <h1>Diário das Emoções</h1>
+        <form id="diario-form">
+            <label for="data">Data:</label>
+            <input type="date" id="data" name="data">
+
+            <label for="emocoes">Emoções (descreva como você se sentiu):</label>
+            <textarea id="emocoes" name="emocoes"></textarea>
+
+            <button type="button" onclick="salvarEntrada()">Salvar Entrada</button>
+        </form>
+
+        <div id="entradas-anteriores">
+            <h2>Entradas Anteriores</h2>
+        </div>
+    </main>
+
+    <script>
+        function salvarEntrada() {
+            const data = document.getElementById("data").value;
+            const emocoes = document.getElementById("emocoes").value;
+
+            if (data && emocoes) {
+                const entradasAnteriores = document.getElementById("entradas-anteriores");
+
+                const novaEntrada = document.createElement("div");
+                novaEntrada.className = "entrada";
+                novaEntrada.innerHTML = `
+                    <div class="entrada-data">${data}</div>
+                    <div class="entrada-emocoes">${emocoes}</div>
+                `;
+
+                entradasAnteriores.appendChild(novaEntrada);
+
+                document.getElementById("data").value = "";
+                document.getElementById("emocoes").value = "";
+            } else {
+                alert("Por favor, preencha a data e as emoções.");
+            }
+        }
+    </script>
+</body>
+</html>

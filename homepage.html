@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    <link rel="stylesheet" href="estilos_pastel.css">
+    <style>
+        /* Estilos CSS */
+        .menu {
+            display: flex;
+            justify-content: center;
+            background-color: #f5add1c0;
+            padding: 10px 0;
+        }
+
+        .menu a {
+            color: #000000;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: hsl(0, 0%, 100%);
+        }
+
+        /* Estilos para o conteúdo principal */
+        main {
+            padding: 20px;
+            text-align: center; /* Centraliza o conteúdo horizontalmente */
+        }
+        main img {
+            max-width: 80%; /* Garante que as imagens não ultrapassem a largura do container */
+            height: auto;
+            display: block; /* Evita espaços extras abaixo das imagens */
+            margin: 10px auto; /* Centraliza as imagens horizontalmente e adiciona margem superior/inferior */
+        }
+    </style>
+    <script>
+        // Código JavaScript do Quiz
+        function abrirQuiz() {
+            const perguntas = [
+                {
+                    pergunta: "Com que frequência você se sente ansioso ou estressado?",
+                    opcoes: ["Nunca", "Raramente", "Às vezes", "Frequentemente", "Sempre"]
+                },
+                {
+                    pergunta: "Como você avalia sua qualidade de sono?",
+                    opcoes: ["Excelente", "Boa", "Regular", "Ruim", "Péssima"]
+                },
+                {
+                    pergunta: "Com que frequência você se sente feliz ou satisfeito?",
+                    opcoes: ["Sempre", "Frequentemente", "Às vezes", "Raramente", "Nunca"]
+                },
+                {
+                    pergunta: "Você sente que tem apoio emocional de amigos ou familiares?",
+                    opcoes: ["Sempre", "Frequentemente", "Às vezes", "Raramente", "Nunca"]
+                }
+            ];
+
+            let respostas = [];
+
+            for (let i = 0; i < perguntas.length; i++) {
+                let resposta = prompt(`${perguntas[i].pergunta}\n\n${perguntas[i].opcoes.map((op, idx) => `${idx + 1}. ${op}`).join("\n")}`);
+                if (resposta === null) {
+                    alert("Quiz cancelado.");
+                    return;
+                }
+                respostas.push(parseInt(resposta));
+            }
+
+            const pontuacao = respostas.reduce((acc, curr) => acc + curr, 0);
+            let resultado;
+
+            if (pontuacao <= 6) {
+                resultado = "Sua saúde mental parece estar ótima! Continue cuidando bem de si mesmo.";
+            } else if (pontuacao <= 12) {
+                resultado = "Sua saúde mental está boa, mas pode haver espaço para melhorias.";
+            } else if (pontuacao <= 18) {
+                resultado = "Sua saúde mental está moderada. Considere buscar atividades relaxantes ou apoio.";
+            } else {
+                resultado = "Sua saúde mental parece estar em risco. É importante procurar ajuda profissional.";
+            }
+
+            alert(resultado);
+        }
+    </script>
+</head>
+<body>
+    <div class="menu">
+        <img src="./img/plenamente.png" alt="plenamente" style="max-width: 50px;">
+        <a href="./homepage.html">Início</a>
+        <a href="#" onclick="abrirQuiz()">Quiz</a>
+        <a href="./forum.html">Fórum</a>
+        <a href="./login.html">Login</a>
+        <a href="./cadastro.html">Cadastro</a>
+        <a href="./diario_das_emocoes.html">Diário das Emoções</a>
+        <a href="./agradecimentos.html">Agradecimentos</a>
+    </div>
+
+    <main>
+        <img src="./img/Inicio.jpg" alt="Imagem de Início">
+        <img src="./img/Sobre nós.jpg" alt="Imagem Sobre Nós">
+        <h1>Bem-vindo à nossa página!</h1>
+        <p>Este é o conteúdo principal da sua página inicial. Adicione mais informações aqui.</p>
+    </main>
+
+</body>
+</html>
+
+<!-- http://127.0.0.1:5500/ -->

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fórum</title>
+    <link rel="stylesheet" href="estilos_pastel.css">
+    <style>
+        .menu {
+            display: flex;
+            justify-content: center;
+            background-color: #f5add1c0; /* Tom pastel */
+            padding: 10px 0;
+        }
+
+        .menu a {
+            color: #000000;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+
+        .menu a:hover {
+            color: hsl(0, 0%, 100%);
+        }
+
+        .forum-container {
+            width: 80%; /* Largura do container do fórum */
+            margin: 20px auto; /* Centraliza o container */
+            border: 1px solid #ccc; /* Adiciona uma borda */
+            padding: 20px;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* Sombra leve */
+        }
+        .forum-post {
+          border-bottom: 1px solid #ddd;
+          padding-bottom: 10px;
+          margin-bottom: 10px;
+        }
+        .post-title {
+          font-weight: bold;
+          font-size: 1.2em;
+        }
+        .new-post {
+          margin-top: 20px;
+          border: 1px solid #ccc;
+          padding: 10px;
+          background-color: #f9f9f9;
+        }
+        .new-post label {
+            display: block; /*labels ficam em blocos separados*/
+            margin-bottom: 5px; /*espaçamento entre label e input*/
+        }
+        .new-post input[type="text"],
+        .new-post textarea {
+            width: calc(100% - 12px); /*largura de 100% - as bordas e paddings*/
+            padding: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            box-sizing: border-box; /*inclui padding e borda na largura total*/
+        }
+    </style>
+    <script>
+        function abrirQuiz() {
+            // ... (seu código do quiz permanece o mesmo)
+        }
+
+        function criarPost() {
+          const titulo = document.getElementById('post-titulo').value;
+          const conteudo = document.getElementById('post-conteudo').value;
+
+          if (titulo.trim() === '' || conteudo.trim() === '') {
+            alert('Por favor, preencha o título e o conteúdo do post.');
+            return;
+          }
+
+          const novoPost = document.createElement('div');
+          novoPost.className = 'forum-post';
+          novoPost.innerHTML = `
+            <div class="post-title">${titulo}</div>
+            <div class="post-author">Por: Você</div>
+            <div class="post-content">${conteudo}</div>
+          `;
+
+          document.getElementById('forum-posts').appendChild(novoPost);
+
+          // Limpa os campos do formulário após a publicação
+          document.getElementById('post-titulo').value = '';
+          document.getElementById('post-conteudo').value = '';
+        }
+    </script>
+</head>
+<body>
+    <div class="menu">
+        <img src="./img/plenamente.png" alt="plenamente" style="max-width: 50px;">
+        <a href="./homepage.html">Início</a>
+        <a href="#" onclick="abrirQuiz()">Quiz</a>
+        <a href="./forum.html">Fórum</a>
+        <a href="./login.html">Login</a>
+        <a href="./cadastro.html">Cadastro</a>
+        <a href="./diario_das_emocoes.html">Diário das Emoções</a>
+        <a href="./agradecimentos.html">Agradecimentos</a>
+    </div>
+
+    <div class="forum-container">
+        <h1>Fórum de Discussão</h1>
+        <div id="forum-posts">
+            <div class="forum-post">
+                <div class="post-title">Bem-vindo ao Fórum!</div>
+                <div class="post-author">Por: Admin</div>
+                <div class="post-content">Agora que você efetuou o seu cadastro. Sinta-se à vontade para compartilhar suas dúvidas e experiências.</div>
+            </div>
+        </div>
+
+        <div class="new-post">
+            <h2>Criar Novo Post</h2>
+            <label for="post-titulo">Título:</label>
+            <input type="text" id="post-titulo" name="post-titulo">
+
+            <label for="post-conteudo">Conteúdo:</label>
+            <textarea id="post-conteudo" name="post-conteudo" rows="4"></textarea>
+
+            <button onclick="criarPost()">Publicar</button>
+        </div>
+    </div>
+</body>
+</html>
