@@ -1,7 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.body.style.background = "linear-gradient(to right, #A8E6CF, #DCEDC1)";
     document.body.style.backgroundAttachment = "fixed";
-    
+
+  
     // Estilização do fórum centralizado
     const forumContainer = document.querySelector(".forum-container");
     if (forumContainer) {
@@ -50,23 +51,24 @@ document.addEventListener("DOMContentLoaded", function () {
         if (!valid) {
             event.preventDefault();
         }
-    });
-    // Verificar se as senhas são iguais
-    const confirmPassword = document.getElementById("confirm-password");
-    if (password.value !== confirmPassword.value) {
-        password.style.border = "2px solid red";
-        confirmPassword.style.border = "2px solid red";
-        alert("As senhas não coincidem. Por favor, digite novamente.");
-        valid = false;
-    } else {
-        password.style.border = "";
-        confirmPassword.style.border = "";
-    }
 
-    if (!valid) {
-        event.preventDefault();
-    }
-});
+        // Verificar se as senhas são iguais
+        const confirmPassword = document.getElementById("confirm-password");
+        if (confirmPassword && password.value !== confirmPassword.value) {
+            password.style.border = "2px solid red";
+            confirmPassword.style.border = "2px solid red";
+            alert("As senhas não coincidem. Por favor, digite novamente.");
+            valid = false;
+        } else {
+            password.style.border = "";
+            confirmPassword.style.border = "";
+        }
+
+        if (!valid) {
+            event.preventDefault(); // Impede o envio do formulário
+        }
+    });
+   
      // Função para abrir o quiz
     window.abrirQuiz = function () {
         const perguntas = [
