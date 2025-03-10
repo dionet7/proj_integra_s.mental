@@ -4,55 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
-    <link rel="stylesheet" href="./css/estilos_pastel.css">
-         <script>
-            function abrirQuiz() {
-                const perguntas = [
-                    {
-                        pergunta: "Com que frequência você se sente ansioso ou estressado?",
-                        opcoes: ["Nunca", "Raramente", "Às vezes", "Frequentemente", "Sempre"]
-                    },
-                    {
-                        pergunta: "Como você avalia sua qualidade de sono?",
-                        opcoes: ["Excelente", "Boa", "Regular", "Ruim", "Péssima"]
-                    },
-                    {
-                        pergunta: "Com que frequência você se sente feliz ou satisfeito?",
-                        opcoes: ["Sempre", "Frequentemente", "Às vezes", "Raramente", "Nunca"]
-                    },
-                    {
-                        pergunta: "Você sente que tem apoio emocional de amigos ou familiares?",
-                        opcoes: ["Sempre", "Frequentemente", "Às vezes", "Raramente", "Nunca"]
-                    }
-                ];
-    
-                let respostas = [];
-    
-                for (let i = 0; i < perguntas.length; i++) {
-                    let resposta = prompt(`${perguntas[i].pergunta}\n\n${perguntas[i].opcoes.map((op, idx) => `${idx + 1}. ${op}`).join("\n")}`);
-                    if (resposta === null) {
-                        alert("Quiz cancelado.");
-                        return;
-                    }
-                    respostas.push(parseInt(resposta));
-                }
-    
-                const pontuacao = respostas.reduce((acc, curr) => acc + curr, 0);
-                let resultado;
-    
-                if (pontuacao <= 6) {
-                    resultado = "Sua saúde mental parece estar ótima! Continue cuidando bem de si mesmo.";
-                } else if (pontuacao <= 12) {
-                    resultado = "Sua saúde mental está boa, mas pode haver espaço para melhorias.";
-                } else if (pontuacao <= 18) {
-                    resultado = "Sua saúde mental está moderada. Considere buscar atividades relaxantes ou apoio.";
-                } else {
-                    resultado = "Sua saúde mental parece estar em risco. É importante procurar ajuda profissional.";
-                }
-    
-                alert(resultado);
-            }
-        </script>
+    <link rel="stylesheet" href="./css/estilos.css">
+    <script src="./js/script.js" defer></script>
+
+         
 </head>
     <body>
         <div class="menu">
@@ -65,6 +20,52 @@
             <a href="./diario_das_emocoes.html">Diário das Emoções</a>
             <a href="./agradecimentos.html">Agradecimentos</a>
         </div>
+        <!-- <div>
+            <img src="./img/Inicio.jpg" alt="imagem2">
+            <img src="./img/Sobre nós.jpg" alt="imagem1">
+            
+        </div> -->
+        <div class="home-container">
+            <div class="home-text">
+                <h1>Bem-vindo ao Plenamente</h1>
+                <p>Explore nossos recursos para melhorar sua saúde mental e bem-estar.</p>
+            </div>
+            <div class="home-image">
+                <img src="./img/Inicio.png" alt="Imagem de apresentação">
+            </div>
+        </div>
+        
+
+        <div class="home-container">
+            <div class="home-image">
+                <img src="./img/Sobre nós.png" alt="Imagem de apresentação">
+            </div>
+            <div class="home-text">
+                <h1>Sobre nós</h1>
+                <p>Vivemos em um mundo difícil, onde ser "diferente" pode tornar a jornada ainda mais sensível, especialmente para quem enfrenta transtornos mentais ou síndromes. No PlenaMente, acreditamos no acolhimento, no cuidado e no valor de cada vida. Nossa missão é criar um espaço de empatia e apoio, tornando o mundo um lugar melhor para todos..</p>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="footer-section">
+                    <h4>Redes Sociais</h4>
+                    <a href="https://facebook.com" target="_blank">Facebook</a>
+                    <a href="https://instagram.com" target="_blank">Instagram</a>
+                    <a href="https://twitter.com" target="_blank">Twitter</a>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato</h4>
+                    <p>Email: contato@plenamente.com</p>
+                    <p>Telefone: (11) 99999-9999</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Termos</h4>
+                    <a href="#">Política de Privacidade</a>
+                    <a href="#">Termos de Uso</a>
+                </div>
+            </div>
+        </footer>
+        
     </body>
 </html>
 
